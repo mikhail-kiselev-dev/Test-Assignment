@@ -6,4 +6,5 @@
     <string name="unexpected_server_error">Unexpected server error, please try again later</string>
     <string name="unexpected_network_error">Network error</string>
 
+    <string name="posts">Posts: %1$s</string>
 </resources>

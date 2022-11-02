@@ -7,22 +7,24 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivUser"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginVertical="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="@dimen/userPictureThumbnailSize"
+        android:layout_height="@dimen/userPictureThumbnailSize"
+        android:layout_marginVertical="@dimen/marginMedium"
+        android:layout_marginStart="@dimen/marginMedium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/Circular"
+        app:shapeAppearanceOverlay="@style/CircularView"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvName"
+        style="@style/BaseText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tvPosts"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ivClickUser"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toEndOf="@+id/ivUser"
         app:layout_constraintTop_toTopOf="@+id/ivUser"
@@ -31,6 +33,7 @@
 
     <TextView
         android:id="@+id/tvPosts"
+        style="@style/BaseTextSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/ivUser"
@@ -38,5 +41,17 @@
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="@+id/tvName"
         app:layout_constraintTop_toBottomOf="@id/tvName"
-        tools:text="140" />
+        android:text="@string/posts"
+        tools:text="Posts: 140" />
+
+    <ImageView
+        android:id="@+id/ivClickUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/ivUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toEndOf="@+id/ivUser"
+        app:layout_constraintTop_toTopOf="@+id/ivUser"
+        app:srcCompat="@drawable/ic_right_arrow_black" />
 </androidx.constraintlayout.widget.ConstraintLayout>

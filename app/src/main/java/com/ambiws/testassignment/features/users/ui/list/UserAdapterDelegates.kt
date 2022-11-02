@@ -1,5 +1,6 @@
 package com.ambiws.testassignment.features.users.ui.list
 
+import com.ambiws.testassignment.R
 import com.ambiws.testassignment.databinding.ItemUserBinding
 import com.bumptech.glide.Glide
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
@@ -17,7 +18,7 @@ object UserAdapterDelegates {
                 with(binding) {
                     Glide.with(this.root).load(item.thumbnailUrl).into(ivUser)
                     tvName.text = item.name
-                    tvPosts.text = item.postsCount.toString()
+                    tvPosts.text = this.root.resources.getString(R.string.posts, item.postsCount.toString())
                 }
             }
         }

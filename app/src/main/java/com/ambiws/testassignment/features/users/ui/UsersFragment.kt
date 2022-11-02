@@ -38,7 +38,7 @@ class UsersFragment : BaseFragment<UsersViewModel, FragmentUsersBinding>(
     }
 
     private fun setupListeners() {
-
+        // Nothing to do
     }
 
     private fun setupObservers() {
