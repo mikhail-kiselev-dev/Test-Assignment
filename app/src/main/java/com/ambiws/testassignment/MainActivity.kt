@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             onNavGraphInited()
             return
         } else {
-            val destination = R.id.blankFragment
+            val destination = R.id.usersFragment
             mainViewModel.initStartDestinationBy(destination)
         }
     }

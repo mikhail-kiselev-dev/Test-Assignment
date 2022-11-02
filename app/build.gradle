@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -21,6 +22,7 @@ android {
 
         all {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "SERVER_URL", "\"https://my-json-server.typicode.com/\""
         }
 
         release {
@@ -87,4 +89,12 @@ dependencies {
     // Insets
     def insetterVersion = '0.3.1'
     api "dev.chrisbanes:insetter-ktx:$insetterVersion"
+
+    // AdapterDelegate
+    api 'com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:4.3.2'
+
+    // Images
+    def glideVersion = '4.13.1'
+    api "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
 }
