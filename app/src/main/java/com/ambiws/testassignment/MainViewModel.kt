@@ -2,11 +2,12 @@ package com.ambiws.testassignment
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
+import com.ambiws.testassignment.base.ui.BaseViewModel
 import com.ambiws.testassignment.core.models.AnimationType
 import com.ambiws.testassignment.core.models.NavigationBundle
 import com.ambiws.testassignment.core.utils.SingleLiveEvent
 
-class MainViewModel : ViewModel() {
+class MainViewModel : BaseViewModel() {
 
     val startDestinationLiveEvent = SingleLiveEvent<NavigationBundle>()
 

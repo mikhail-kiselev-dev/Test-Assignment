@@ -74,4 +74,17 @@ dependencies {
     def nav_version = "2.5.3"
     api "androidx.navigation:navigation-fragment-ktx:$nav_version"
     api "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Web
+    def retrofit2Version = "2.9.0"
+    api "com.squareup.retrofit2:retrofit:$retrofit2Version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit2Version"
+    def okhttp3Version = "4.9.0"
+    api(platform("com.squareup.okhttp3:okhttp-bom:$okhttp3Version"))
+    api("com.squareup.okhttp3:okhttp")
+    api("com.squareup.okhttp3:logging-interceptor")
+
+    // Insets
+    def insetterVersion = '0.3.1'
+    api "dev.chrisbanes:insetter-ktx:$insetterVersion"
 }
