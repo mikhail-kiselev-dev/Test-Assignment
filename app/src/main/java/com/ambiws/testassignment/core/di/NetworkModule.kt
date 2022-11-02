@@ -2,6 +2,7 @@ package com.ambiws.testassignment.core.di
 
 import com.ambiws.testassignment.BuildConfig
 import com.ambiws.testassignment.core.network.error.parser.ErrorCallAdapterFactory
+import com.ambiws.testassignment.features.posts.network.PostApi
 import com.ambiws.testassignment.features.users.network.UserApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -40,5 +41,9 @@ val networkModule = module {
 
     single<UserApi> {
         (get() as Retrofit).create(UserApi::class.java)
+    }
+
+    single<PostApi> {
+        (get() as Retrofit).create(PostApi::class.java)
     }
 }

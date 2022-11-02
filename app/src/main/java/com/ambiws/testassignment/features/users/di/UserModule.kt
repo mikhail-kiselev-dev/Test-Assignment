@@ -12,6 +12,6 @@ val userModule = module {
     single<UserRepository> { UserRepositoryImpl(get()) }
     factory<UserInteractor> { UserInteractorImpl(get()) }
     viewModel {
-        UsersViewModel(get())
+        UsersViewModel(get(), get())
     }
 }

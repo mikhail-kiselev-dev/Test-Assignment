@@ -17,7 +17,7 @@ object UserAdapterDelegates {
                 with(binding) {
                     Glide.with(this.root).load(item.thumbnailUrl).into(ivUser)
                     tvName.text = item.name
-                    tvPosts.text = "${item.name} posts count"
+                    tvPosts.text = item.postsCount.toString()
                 }
             }
         }

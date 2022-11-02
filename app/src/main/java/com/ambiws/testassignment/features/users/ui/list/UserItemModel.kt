@@ -6,4 +6,5 @@ data class UserItemModel(
     val name: String,
     val body: String,
     val thumbnailUrl: String,
+    val postsCount: Int,
 ) : UserListItemModel
