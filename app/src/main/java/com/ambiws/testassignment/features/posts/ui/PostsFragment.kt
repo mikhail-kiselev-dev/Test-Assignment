@@ -32,7 +32,6 @@ class PostsFragment : BaseFragment<PostsViewModel, FragmentPostsBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUi()
-        setupListeners()
         setupObservers()
     }
 
@@ -45,10 +44,6 @@ class PostsFragment : BaseFragment<PostsViewModel, FragmentPostsBinding>(
         binding.rvUserPosts.layoutManager = layoutManager
         binding.rvUserPosts.adapter = adapter
         viewModel.loadPosts(args.postsParams.id)
-    }
-
-    private fun setupListeners() {
-        // Nothing to do
     }
 
     private fun setupObservers() {

@@ -30,7 +30,6 @@ class UsersFragment : BaseFragment<UsersViewModel, FragmentUsersBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUi()
-        setupListeners()
         setupObservers()
     }
 
@@ -38,10 +37,6 @@ class UsersFragment : BaseFragment<UsersViewModel, FragmentUsersBinding>(
         val layoutManager = LinearLayoutManager(requireContext())
         binding.rvUsers.layoutManager = layoutManager
         binding.rvUsers.adapter = adapter
-    }
-
-    private fun setupListeners() {
-        // Nothing to do
     }
 
     private fun setupObservers() {
