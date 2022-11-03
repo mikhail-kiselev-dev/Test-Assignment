@@ -1,29 +1,31 @@
-package com.ambiws.testassignment.features.users.ui
+package com.ambiws.testassignment.features.posts.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ambiws.testassignment.R
 import com.ambiws.testassignment.base.list.DefaultListDiffer
 import com.ambiws.testassignment.base.ui.BaseFragment
 import com.ambiws.testassignment.core.extensions.subscribe
-import com.ambiws.testassignment.databinding.FragmentUsersBinding
-import com.ambiws.testassignment.features.users.ui.list.UserAdapterDelegates
-import com.ambiws.testassignment.features.users.ui.list.UserListItemModel
+import com.ambiws.testassignment.databinding.FragmentPostsBinding
+import com.ambiws.testassignment.features.posts.ui.list.PostAdapterDelegates
+import com.ambiws.testassignment.features.posts.ui.list.PostListItemModel
+import com.bumptech.glide.Glide
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 
-class UsersFragment : BaseFragment<UsersViewModel, FragmentUsersBinding>(
-    R.layout.fragment_users,
-    FragmentUsersBinding::bind
+class PostsFragment : BaseFragment<PostsViewModel, FragmentPostsBinding>(
+    R.layout.fragment_posts,
+    FragmentPostsBinding::bind
 ) {
+
+    private val args: PostsFragmentArgs by navArgs()
 
     private val adapter by lazy {
         AsyncListDifferDelegationAdapter(
-            DefaultListDiffer<UserListItemModel>(),
-            UserAdapterDelegates.userAdapterDelegate { id, image ->
-                viewModel.showUserPosts(id, image)
-            }
+            DefaultListDiffer<PostListItemModel>(),
+            PostAdapterDelegates.postAdapterDelegate()
         )
     }
 
@@ -35,9 +37,14 @@ class UsersFragment : BaseFragment<UsersViewModel, FragmentUsersBinding>(
     }
 
     private fun setupUi() {
+        Glide.with(requireContext())
+            .load(args.postsParams.userImage)
+            .placeholder(R.drawable.placeholder)
+            .into(binding.ivUserImage)
         val layoutManager = LinearLayoutManager(requireContext())
-        binding.rvUsers.layoutManager = layoutManager
-        binding.rvUsers.adapter = adapter
+        binding.rvUserPosts.layoutManager = layoutManager
+        binding.rvUserPosts.adapter = adapter
+        viewModel.loadPosts(args.postsParams.id)
     }
 
     private fun setupListeners() {
@@ -45,7 +52,7 @@ class UsersFragment : BaseFragment<UsersViewModel, FragmentUsersBinding>(
     }
 
     private fun setupObservers() {
-        subscribe(viewModel.users) {
+        subscribe(viewModel.posts) {
             adapter.setItems(it)
         }
         subscribe(viewModel.loadingObservable) {

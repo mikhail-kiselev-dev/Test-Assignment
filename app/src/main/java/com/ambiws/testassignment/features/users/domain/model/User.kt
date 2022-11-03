@@ -4,6 +4,6 @@ data class User(
     val albumId: Long,
     val userId: Long,
     val name: String,
-    val body: String,
+    val url: String,
     val thumbnailUrl: String,
 )

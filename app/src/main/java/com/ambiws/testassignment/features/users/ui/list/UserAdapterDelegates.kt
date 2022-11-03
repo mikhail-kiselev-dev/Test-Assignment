@@ -8,7 +8,7 @@ import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
 object UserAdapterDelegates {
 
-    fun userAdapterDelegate(): AdapterDelegate<List<UserListItemModel>> =
+    fun userAdapterDelegate(onClick: (Long, String) -> Unit): AdapterDelegate<List<UserListItemModel>> =
         adapterDelegateViewBinding<UserItemModel, UserListItemModel, ItemUserBinding>(
             { layoutInflater, parent ->
                 ItemUserBinding.inflate(layoutInflater, parent, false)
@@ -16,9 +16,15 @@ object UserAdapterDelegates {
         ) {
             bind {
                 with(binding) {
-                    Glide.with(this.root).load(item.thumbnailUrl).into(ivUser)
+                    Glide.with(this.root)
+                        .load(item.thumbnailUrl)
+                        .placeholder(R.drawable.ic_image_grey)
+                        .into(ivUser)
                     tvName.text = item.name
                     tvPosts.text = this.root.resources.getString(R.string.posts, item.postsCount.toString())
+                    this.root.setOnClickListener {
+                        onClick.invoke(item.userId, item.url)
+                    }
                 }
             }
         }

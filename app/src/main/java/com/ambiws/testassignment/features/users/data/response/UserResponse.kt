@@ -12,7 +12,7 @@ data class UserResponse(
     @SerializedName("name")
     val name: String?,
     @SerializedName("url")
-    val body: String?,
+    val url: String?,
     @SerializedName("thumbnailUrl")
     val thumbnailUrl: String?,
 )
@@ -22,6 +22,6 @@ fun UserResponse.toDomain() =
         albumId = albumId.getOrThrowDefaultError("albumId"),
         userId = userId.getOrThrowDefaultError("userId"),
         name = name.getOrThrowDefaultError("name"),
-        body = body.getOrThrowDefaultError("body"),
+        url = url.getOrThrowDefaultError("url"),
         thumbnailUrl = thumbnailUrl.getOrThrowDefaultError("thumbnailUrl"),
     )

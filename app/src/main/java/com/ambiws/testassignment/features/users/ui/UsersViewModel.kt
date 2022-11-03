@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.ambiws.testassignment.base.ui.BaseViewModel
 import com.ambiws.testassignment.core.extensions.mutable
 import com.ambiws.testassignment.features.posts.domain.PostInteractor
+import com.ambiws.testassignment.features.posts.ui.args.PostsFragmentParams
 import com.ambiws.testassignment.features.users.domain.UserInteractor
 import com.ambiws.testassignment.features.users.ui.list.UserItemModel
 import kotlinx.coroutines.flow.collectLatest
@@ -19,20 +20,20 @@ class UsersViewModel(
 
     init {
         launch {
-            userInteractor.getUsers()
-            postInteractor.getPosts()
-            userInteractor.users.combine(postInteractor.postsFlow) { usersFlow, postsFlow ->
+            loadingObservable.mutable().value = true
+            userInteractor.getUsers().combine(postInteractor.getPosts()) { usersFlow, postsFlow ->
                 usersFlow.map {
                     UserItemModel(
                         albumId = it.albumId,
                         userId = it.userId,
                         name = it.name,
-                        body = it.body,
+                        url = it.url,
                         thumbnailUrl = it.thumbnailUrl,
                         postsCount = postsFlow.filter { post -> post.userId == it.userId }.size
                     )
                 }
             }.collectLatest {
+                loadingObservable.mutable().value = false
                 updateUsers(it)
             }
         }
@@ -40,5 +41,16 @@ class UsersViewModel(
 
     private fun updateUsers(list: List<UserItemModel>) {
         users.mutable().value = list
+    }
+
+    fun showUserPosts(userId: Long, userImage: String) {
+        navigate(
+            UsersFragmentDirections.actionUsersFragmentToPostsFragment(
+                PostsFragmentParams(
+                    id = userId,
+                    userImage = userImage,
+                )
+            )
+        )
     }
 }

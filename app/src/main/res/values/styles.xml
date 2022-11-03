@@ -18,7 +18,24 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="BaseTextHeader" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/textBaseSizeHeader</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="CircularView">
         <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="BottomRoundedCornersView" parent="">
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomLeft">32dp</item>
+        <item name="cornerSizeBottomRight">32dp</item>
+        <item name="cornerFamily">rounded</item>
     </style>
 </resources>

@@ -185,12 +185,7 @@ abstract class BaseViewModel : ViewModel(), NavigableViewModel, KoinScopeCompone
         block: suspend CoroutineScope.() -> Unit
     ): Job {
         return scope.launch(dispatcher + errorHandler) {
-            try {
-                loadingObservable.postValue(true)
-                this.block()
-            } finally {
-                loadingObservable.postValue(false)
-            }
+            this.block()
         }
     }
 

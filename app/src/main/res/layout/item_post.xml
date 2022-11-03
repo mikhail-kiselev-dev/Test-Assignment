@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvHeader"
+        style="@style/BaseTextHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginMedium"
+        android:paddingHorizontal="@dimen/marginMedium"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/tvBody"
+        style="@style/BaseText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginMedium"
+        android:paddingHorizontal="@dimen/marginMedium"
+        android:layout_marginBottom="@dimen/marginLarge"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeader"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue orci augue, quis posuere est egestas et. Mauris ultrices, sapien eget maximus ultricies, metus lectus malesuada orci, non lacinia mi urna non elit. Maecenas id elementum nisl. Fusce in ex risus. Maecenas interdum lobortis risus. Aenean elit ex, hendrerit at consectetur non, malesuada ac nulla. Quisque lobortis arcu sed mi placerat vehicula. Aliquam tincidunt felis vitae interdum auctor. Aliquam placerat lobortis velit in eleifend." />
+</androidx.constraintlayout.widget.ConstraintLayout>

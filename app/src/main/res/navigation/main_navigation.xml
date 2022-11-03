@@ -8,5 +8,18 @@
     <fragment
         android:id="@+id/usersFragment"
         android:name="com.ambiws.testassignment.features.users.ui.UsersFragment"
-        android:label="UsersFragment" />
+        android:label="UsersFragment">
+        <action
+            android:id="@+id/action_usersFragment_to_postsFragment"
+            app:destination="@id/postsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/postsFragment"
+        android:name="com.ambiws.testassignment.features.posts.ui.PostsFragment"
+        android:label="PostsFragment" >
+        <argument
+            android:name="postsParams"
+            app:argType="com.ambiws.testassignment.features.posts.ui.args.PostsFragmentParams" />
+    </fragment>
 </navigation>

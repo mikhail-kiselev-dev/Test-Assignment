@@ -4,7 +4,7 @@ data class UserItemModel(
     val albumId: Long,
     val userId: Long,
     val name: String,
-    val body: String,
+    val url: String,
     val thumbnailUrl: String,
     val postsCount: Int,
 ) : UserListItemModel
