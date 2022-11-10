@@ -2,13 +2,14 @@ package com.ambiws.testassignment.features.users.ui.list
 
 import com.ambiws.testassignment.R
 import com.ambiws.testassignment.databinding.ItemUserBinding
+import com.ambiws.testassignment.features.posts.domain.model.Post
 import com.bumptech.glide.Glide
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
 object UserAdapterDelegates {
 
-    fun userAdapterDelegate(onClick: (Long, String) -> Unit): AdapterDelegate<List<UserListItemModel>> =
+    fun userAdapterDelegate(onClick: (Long, String, List<Post>) -> Unit): AdapterDelegate<List<UserListItemModel>> =
         adapterDelegateViewBinding<UserItemModel, UserListItemModel, ItemUserBinding>(
             { layoutInflater, parent ->
                 ItemUserBinding.inflate(layoutInflater, parent, false)
@@ -23,7 +24,7 @@ object UserAdapterDelegates {
                     tvName.text = item.name
                     tvPosts.text = this.root.resources.getString(R.string.posts, item.postsCount.toString())
                     this.root.setOnClickListener {
-                        onClick.invoke(item.userId, item.url)
+                        onClick.invoke(item.userId, item.url, item.posts)
                     }
                 }
             }

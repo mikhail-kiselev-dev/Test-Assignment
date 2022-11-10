@@ -21,8 +21,8 @@ class UsersFragment : BaseFragment<UsersViewModel, FragmentUsersBinding>(
     private val adapter by lazy {
         AsyncListDifferDelegationAdapter(
             DefaultListDiffer<UserListItemModel>(),
-            UserAdapterDelegates.userAdapterDelegate { id, image ->
-                viewModel.showUserPosts(id, image)
+            UserAdapterDelegates.userAdapterDelegate { id, image, posts ->
+                viewModel.showUserPosts(id, image, posts)
             }
         )
     }

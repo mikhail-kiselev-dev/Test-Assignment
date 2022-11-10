@@ -43,7 +43,7 @@ class PostsFragment : BaseFragment<PostsViewModel, FragmentPostsBinding>(
         val layoutManager = LinearLayoutManager(requireContext())
         binding.rvUserPosts.layoutManager = layoutManager
         binding.rvUserPosts.adapter = adapter
-        viewModel.loadPosts(args.postsParams.id)
+        viewModel.loadPosts(args.postsParams.id, args.postsParams.posts)
     }
 
     private fun setupObservers() {

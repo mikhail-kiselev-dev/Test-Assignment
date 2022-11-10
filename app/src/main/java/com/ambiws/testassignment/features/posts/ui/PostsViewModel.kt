@@ -16,14 +16,10 @@ class PostsViewModel(
 
     val posts: LiveData<List<PostItemModel>> = MutableLiveData(emptyList())
 
-    fun loadPosts(userId: Long) {
-        launch {
-            loadingObservable.mutable().value = true
-            postsInteractor.getUserPosts(userId).collectLatest {
-                loadingObservable.mutable().value = false
-                updateUserPosts(it)
-            }
-        }
+    fun loadPosts(userId: Long, posts: List<Post>) {
+        updateUserPosts(posts = posts.filter {
+            it -> it.userId == userId
+        })
     }
 
     private fun updateUserPosts(posts: List<Post>) {
