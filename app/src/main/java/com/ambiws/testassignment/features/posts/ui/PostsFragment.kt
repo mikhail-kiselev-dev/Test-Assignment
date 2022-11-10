@@ -8,14 +8,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ambiws.testassignment.R
 import com.ambiws.testassignment.base.list.DefaultListDiffer
 import com.ambiws.testassignment.base.ui.BaseFragment
+import com.ambiws.testassignment.base.ui.EmptyViewModel
 import com.ambiws.testassignment.core.extensions.subscribe
 import com.ambiws.testassignment.databinding.FragmentPostsBinding
 import com.ambiws.testassignment.features.posts.ui.list.PostAdapterDelegates
+import com.ambiws.testassignment.features.posts.ui.list.PostItemModel
 import com.ambiws.testassignment.features.posts.ui.list.PostListItemModel
 import com.bumptech.glide.Glide
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 
-class PostsFragment : BaseFragment<PostsViewModel, FragmentPostsBinding>(
+class PostsFragment : BaseFragment<EmptyViewModel, FragmentPostsBinding>(
     R.layout.fragment_posts,
     FragmentPostsBinding::bind
 ) {
@@ -43,13 +45,15 @@ class PostsFragment : BaseFragment<PostsViewModel, FragmentPostsBinding>(
         val layoutManager = LinearLayoutManager(requireContext())
         binding.rvUserPosts.layoutManager = layoutManager
         binding.rvUserPosts.adapter = adapter
-        viewModel.loadPosts(args.postsParams.id, args.postsParams.posts)
+        adapter.items = args.postsParams.posts.map {
+            PostItemModel(
+                title = it.title,
+                body = it.body,
+            )
+        }
     }
 
     private fun setupObservers() {
-        subscribe(viewModel.posts) {
-            adapter.setItems(it)
-        }
         subscribe(viewModel.loadingObservable) {
             binding.loadingProgressBar.isVisible = it
         }

@@ -6,7 +6,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class PostsFragmentParams(
-    val id: Long,
     val userImage: String,
     val posts: List<Post>,
 ) : Parcelable
